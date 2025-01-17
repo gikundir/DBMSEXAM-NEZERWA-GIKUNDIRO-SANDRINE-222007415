@@ -1,0 +1,225 @@
+""" this is question 9"""
+
+
+mysql> create table EMPLOYEES9( Emp_ID INT, Fname varchar(20), Lname varchar(14),Email varchar(20),Phone_number int, Hire_date varchar(25), JOb_ID INT,SALARY INT,COMMISSION_PCT VARCHAR(10),MANAGER_ID INT, DeptID INT);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> SELECT*FROM EMPLOYEES9;
+Empty set (0.01 sec)
+
+mysql> DESC EMPLOYEES9;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| Emp_ID         | int         | YES  |     | NULL    |       |
+| Fname          | varchar(20) | YES  |     | NULL    |       |
+| Lname          | varchar(14) | YES  |     | NULL    |       |
+| Email          | varchar(20) | YES  |     | NULL    |       |
+| Phone_number   | int         | YES  |     | NULL    |       |
+| Hire_date      | varchar(25) | YES  |     | NULL    |       |
+| JOb_ID         | int         | YES  |     | NULL    |       |
+| SALARY         | int         | YES  |     | NULL    |       |
+| COMMISSION_PCT | varchar(10) | YES  |     | NULL    |       |
+| MANAGER_ID     | int         | YES  |     | NULL    |       |
+| DeptID         | int         | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEES9 VALUES(1,'Emma','IRASUBIZA','emma@gmail.com',0789,1/1/2019,10,12000,'ABC',100,20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEES9 VALUES(2,'Loy','NAMARA','cynthia@gmail.com',0783,1/2/2012,11,10000,'ABCD',101,21);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEES9 VALUES(3,'Claudine','MUJAWIMANA','claudine123@gmail.com',078900,17/2/2024,12,90000,'ABCE',102,22);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEES9 VALUES(4,'AUSTIN','RWEMA','123@gmail.com',078920,17/2/2024,13,5000,'ABCE',103,60);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEES9 VALUES(5,'AUSTIN','RWEMA',nepo3@gmail.com',077,17/1/2025,14,4000,'ABCDE',104,70);
+    '> INSERT INTO EMPLOYEES9 VALUES(5,'Innocent','NSHIMIYIMANA',nepo@gmail.com',073,17/1/2025,15,4800,'ABCDE',105,80);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@gmail.com',077,17/1/2025,14,4000,'ABCDE',104,70);
+INSERT INTO EMPLOYEES9 VALUES' at line 1
+mysql> INSERT INTO EMPLOYEES9 VALUES(5,'Innocent','NSHIMIYIMANA','nepo@gmail.com',073,17/1/2025,15,4800,'ABCDE',105,80);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from employees9;
++--------+----------+--------------+----------------------+--------------+----------------------+--------+--------+----------------+------------+--------+
+| Emp_ID | Fname    | Lname        | Email                | Phone_number | Hire_date            | JOb_ID | SALARY | COMMISSION_PCT | MANAGER_ID | DeptID |
++--------+----------+--------------+----------------------+--------------+----------------------+--------+--------+----------------+------------+--------+
+|      1 | Emma     | IRASUBIZA    | emma@gmail.com       |          789 | 0.000495294700346706 |     10 |  12000 | ABC            |        100 |     20 |
+|      2 | Loy      | NAMARA       | cynthia@gmail.com    |          783 | 0.000248508946322067 |     11 |  10000 | ABCD           |        101 |     21 |
+|      3 | Claudine | MUJAWIMANA   | claudine123@gmail.co |        78900 | 0.004199604743083003 |     12 |  90000 | ABCE           |        102 |     22 |
+|      4 | AUSTIN   | RWEMA        | 123@gmail.com        |        78920 | 0.004199604743083003 |     13 |   5000 | ABCE           |        103 |     60 |
+|      5 | Innocent | NSHIMIYIMANA | nepo@gmail.com       |           73 | 0.008395061728395061 |     15 |   4800 | ABCDE          |        105 |     80 |
++--------+----------+--------------+----------------------+--------------+----------------------+--------+--------+----------------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select Emp_ID,Fname,Lname,salary from emlpoyees9;
+ERROR 1146 (42S02): Table 'practical_exam.emlpoyees9' doesn't exist
+mysql> select Emp_ID,Fname,Lname,salary from employees9;
++--------+----------+--------------+--------+
+| Emp_ID | Fname    | Lname        | salary |
++--------+----------+--------------+--------+
+|      1 | Emma     | IRASUBIZA    |  12000 |
+|      2 | Loy      | NAMARA       |  10000 |
+|      3 | Claudine | MUJAWIMANA   |  90000 |
+|      4 | AUSTIN   | RWEMA        |   5000 |
+|      5 | Innocent | NSHIMIYIMANA |   4800 |
++--------+----------+--------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employees9 where Manager_id<=100;
++--------+-------+-----------+----------------+--------------+----------------------+--------+--------+----------------+------------+--------+
+| Emp_ID | Fname | Lname     | Email          | Phone_number | Hire_date            | JOb_ID | SALARY | COMMISSION_PCT | MANAGER_ID | DeptID |
++--------+-------+-----------+----------------+--------------+----------------------+--------+--------+----------------+------------+--------+
+|      1 | Emma  | IRASUBIZA | emma@gmail.com |          789 | 0.000495294700346706 |     10 |  12000 | ABC            |        100 |     20 |
++--------+-------+-----------+----------------+--------------+----------------------+--------+--------+----------------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select Fname,Lname from employees9 where salary>=4800;
++----------+--------------+
+| Fname    | Lname        |
++----------+--------------+
+| Emma     | IRASUBIZA    |
+| Loy      | NAMARA       |
+| Claudine | MUJAWIMANA   |
+| AUSTIN   | RWEMA        |
+| Innocent | NSHIMIYIMANA |
++----------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employees9 where Lname="AUSTIN";
+Empty set (0.00 sec)
+
+mysql> select * from employees where DeptID="60" OR DeptID="70" OR Dept="80";
+ERROR 1054 (42S22): Unknown column 'DeptID' in 'where clause'
+mysql> select * from employees9 where DeptID="60" OR DeptID="70" OR Dept="80";
+ERROR 1054 (42S22): Unknown column 'Dept' in 'where clause'
+mysql> select * from employees9 where DeptID="60" OR DeptID="70";
++--------+--------+-------+---------------+--------------+----------------------+--------+--------+----------------+------------+--------+
+| Emp_ID | Fname  | Lname | Email         | Phone_number | Hire_date            | JOb_ID | SALARY | COMMISSION_PCT | MANAGER_ID | DeptID |
++--------+--------+-------+---------------+--------------+----------------------+--------+--------+----------------+------------+--------+
+|      4 | AUSTIN | RWEMA | 123@gmail.com |        78920 | 0.004199604743083003 |     13 |   5000 | ABCE           |        103 |     60 |
++--------+--------+-------+---------------+--------------+----------------------+--------+--------+----------------+------------+--------+
+1 row in set (0.00 sec)
+
+"""This is question 10"""
+
+
+mysql> CREATE TABLE SALES(SalesNO int, SalesName varchar(10), Branch varchar(10),salesamount int, DOB varchar(15));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into sales values(1,'Claudine','Kigali',12000,'21-DEC-2009');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sales values(2,'Emma','HUYE',12000,'21-DEC-2019');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sales values(3,'Roger','HUYE',10000,'02-JAN-2019');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sales values(4,'Wilson','MUSANZE',70000,'02-DEC-2024');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sales values(5,'ALLAN','MUSANZE',70000,'02-FEB-2025');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM SALES;
++---------+-----------+---------+-------------+-------------+
+| SalesNO | SalesName | Branch  | salesamount | DOB         |
++---------+-----------+---------+-------------+-------------+
+|       1 | Claudine  | Kigali  |       12000 | 21-DEC-2009 |
+|       2 | Emma      | HUYE    |       12000 | 21-DEC-2019 |
+|       3 | Roger     | HUYE    |       10000 | 02-JAN-2019 |
+|       4 | Wilson    | MUSANZE |       70000 | 02-DEC-2024 |
+|       5 | ALLAN     | MUSANZE |       70000 | 02-FEB-2025 |
++---------+-----------+---------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT SUM(SALESAMOUNT) FROM SALES WHERE BRANCH="HUYE";
++------------------+
+| SUM(SALESAMOUNT) |
++------------------+
+|            22000 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(SALESAMOUNT) FROM SALES WHERE BRANCH="MUSANZE";
++------------------+
+| SUM(SALESAMOUNT) |
++------------------+
+|           140000 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(SALESAMOUNT) FROM SALES WHERE BRANCH="KIGALI";
++------------------+
+| SUM(SALESAMOUNT) |
++------------------+
+|            12000 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVERAGE(SALESAMOUNT) FROM SALES WHERE BRANCH="KIGALI";
+ERROR 1305 (42000): FUNCTION practical_exam.AVERAGE does not exist
+mysql> SELECT AVG(SALESAMOUNT) FROM SALES WHERE BRANCH="KIGALI";
++------------------+
+| AVG(SALESAMOUNT) |
++------------------+
+|       12000.0000 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(SALESAMOUNT) FROM SALES WHERE BRANCH="HUYE";
++------------------+
+| AVG(SALESAMOUNT) |
++------------------+
+|       11000.0000 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(SALESAMOUNT) FROM SALES WHERE BRANCH="MUSANZE";
++------------------+
+| AVG(SALESAMOUNT) |
++------------------+
+|       70000.0000 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM SALES WHERE DOB LIKE'%DEC%';
++---------+-----------+---------+-------------+-------------+
+| SalesNO | SalesName | Branch  | salesamount | DOB         |
++---------+-----------+---------+-------------+-------------+
+|       1 | Claudine  | Kigali  |       12000 | 21-DEC-2009 |
+|       2 | Emma      | HUYE    |       12000 | 21-DEC-2019 |
+|       4 | Wilson    | MUSANZE |       70000 | 02-DEC-2024 |
++---------+-----------+---------+-------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT UPPER(SalesName) from sales order by DOB ASC;
++------------------+
+| UPPER(SalesName) |
++------------------+
+| WILSON           |
+| ALLAN            |
+| ROGER            |
+| CLAUDINE         |
+| EMMA             |
++------------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT UPPER(SalesName),DOB from sales order by DOB ASC;
++------------------+-------------+
+| UPPER(SalesName) | DOB         |
++------------------+-------------+
+| WILSON           | 02-DEC-2024 |
+| ALLAN            | 02-FEB-2025 |
+| ROGER            | 02-JAN-2019 |
+| CLAUDINE         | 21-DEC-2009 |
+| EMMA             | 21-DEC-2019 |
++------------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql>
